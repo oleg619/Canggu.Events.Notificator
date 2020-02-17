@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.Asp", "CangguEvents.Asp\CangguEvents.Asp.csproj", "{020E44B8-3421-41D0-852D-FFE46FC59F8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.Integration", "CangguEvents.Integration\CangguEvents.Integration.csproj", "{E99F5B7E-5019-4261-B02D-18485DD1FA3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{5816024B-77C6-46F3-B92E-C67912C78764}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.SQLite", "CangguEvents.SQLite\CangguEvents.SQLite.csproj", "{199A8A2E-95FA-4197-8265-7D297E2D34A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanguuEvents.Wpf", "CanguuEvents.Wpf\CanguuEvents.Wpf.csproj", "{B8305851-F85C-41BD-95A0-E7D6873CED97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.Asp.Tests", "CangguEvents.Asp.Tests\CangguEvents.Asp.Tests.csproj", "{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{020E44B8-3421-41D0-852D-FFE46FC59F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{020E44B8-3421-41D0-852D-FFE46FC59F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{020E44B8-3421-41D0-852D-FFE46FC59F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{020E44B8-3421-41D0-852D-FFE46FC59F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99F5B7E-5019-4261-B02D-18485DD1FA3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99F5B7E-5019-4261-B02D-18485DD1FA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99F5B7E-5019-4261-B02D-18485DD1FA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99F5B7E-5019-4261-B02D-18485DD1FA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5816024B-77C6-46F3-B92E-C67912C78764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5816024B-77C6-46F3-B92E-C67912C78764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5816024B-77C6-46F3-B92E-C67912C78764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5816024B-77C6-46F3-B92E-C67912C78764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{199A8A2E-95FA-4197-8265-7D297E2D34A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199A8A2E-95FA-4197-8265-7D297E2D34A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199A8A2E-95FA-4197-8265-7D297E2D34A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199A8A2E-95FA-4197-8265-7D297E2D34A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8305851-F85C-41BD-95A0-E7D6873CED97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8305851-F85C-41BD-95A0-E7D6873CED97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8305851-F85C-41BD-95A0-E7D6873CED97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8305851-F85C-41BD-95A0-E7D6873CED97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
