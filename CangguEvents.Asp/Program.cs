@@ -49,8 +49,4 @@ namespace CangguEvents.Asp
             webBuilder.UseUrls("http://localhost:8443");
         }
     }
-
-    public static class SeedManager
-    {
-    }
 }

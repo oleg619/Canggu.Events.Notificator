@@ -14,7 +14,7 @@ namespace CangguEvents.SQLite
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.EnableSensitiveDataLogging();
         }
     }
 }

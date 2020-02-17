@@ -22,10 +22,10 @@ namespace CangguEvents.Asp.Tests.Utils
             var builder = Host.CreateDefaultBuilder()
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<CustomStartup>().UseTestServer(); })
-                // .ConfigureAppConfiguration((context, config) =>
-                // {
-                //     config.AddJsonFile("appsettings.json", false, false);
-                // })
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", false, false);
+                })
                 ;
 
             var testHost = builder.Build();
