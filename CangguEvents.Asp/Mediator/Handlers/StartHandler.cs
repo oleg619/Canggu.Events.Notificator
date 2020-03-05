@@ -20,20 +20,23 @@ namespace CangguEvents.Asp.Mediator.Handlers
             _stateRepository = stateRepository;
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(StartCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(StartCommand request,
             CancellationToken cancellationToken)
         {
-            await _stateRepository.CreateUser(request.UserId);
+            var userState = new UserState(true, true);
+            
+            await _stateRepository.CreateUser(request.UserId, userState, cancellationToken);
             return StartKeyboard();
         }
 
-        public Task<IEnumerable<ITelegramResponse>> Handle(BackCommand request, CancellationToken cancellationToken)
+        public Task<IReadOnlyCollection<ITelegramResponse>> Handle(BackCommand request,
+            CancellationToken cancellationToken)
         {
             var startKeyboard = StartKeyboard();
             return Task.FromResult(startKeyboard);
         }
 
-        private static IEnumerable<ITelegramResponse> StartKeyboard()
+        private static IReadOnlyCollection<ITelegramResponse> StartKeyboard()
         {
             ReplyKeyboardMarkup replyKeyboard = new[]
             {

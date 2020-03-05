@@ -21,10 +21,10 @@ namespace CangguEvents.Asp.Mediator.Handlers
             _userStateRepository = userStateRepository;
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(SettingsCommand settingsCommand,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(SettingsCommand settingsCommand,
             CancellationToken cancellationToken)
         {
-            var userState = await _userStateRepository.GetUserState(settingsCommand.UserId);
+            var userState = await _userStateRepository.GetUserState(settingsCommand.UserId, cancellationToken);
 
             var replyKeyboard = GetSettingReplyKeyboardMarkupFor(userState);
 
@@ -32,15 +32,15 @@ namespace CangguEvents.Asp.Mediator.Handlers
             return response;
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(SubscriptionCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(SubscriptionCommand request,
             CancellationToken cancellationToken)
         {
-            var userState = await _userStateRepository.GetUserState(request.UserId);
+            var userState = await _userStateRepository.GetUserState(request.UserId, cancellationToken);
 
             if (userState.Subscribed != request.Subscribe)
             {
                 userState = userState.ChangeSubscribe();
-                await _userStateRepository.ChangeUserState(request.UserId, userState);
+                await _userStateRepository.ChangeUserState(request.UserId, userState, cancellationToken);
             }
 
             var replyKeyboard = GetSettingReplyKeyboardMarkupFor(userState);
@@ -48,15 +48,15 @@ namespace CangguEvents.Asp.Mediator.Handlers
             return new[] {new KeyboardTelegramResponse(replyKeyboard, text)};
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(LengthInfoCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(LengthInfoCommand request,
             CancellationToken cancellationToken)
         {
-            var userState = await _userStateRepository.GetUserState(request.UserId);
+            var userState = await _userStateRepository.GetUserState(request.UserId, cancellationToken);
 
             if (userState.ShortInfo != request.ShortInfo)
             {
                 userState = userState.ChangeShortInfo();
-                await _userStateRepository.ChangeUserState(request.UserId, userState);
+                await _userStateRepository.ChangeUserState(request.UserId, userState, cancellationToken);
             }
 
             var replyKeyboard = GetSettingReplyKeyboardMarkupFor(userState);

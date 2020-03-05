@@ -11,14 +11,14 @@ using Telegram.Bot.Types;
 
 namespace CangguEvents.Asp.Services.Implementation
 {
-    public class MessageHandler
+    public class TelegramMessageHandler
     {
         private readonly MessageParser _messageParser;
         private readonly IMediator _mediator;
         private readonly IMessengerSender _sender;
         private readonly ILogger _logger;
 
-        public MessageHandler(
+        public TelegramMessageHandler(
             MessageParser messageParser,
             IMediator mediator,
             IMessengerSender sender,
@@ -30,17 +30,33 @@ namespace CangguEvents.Asp.Services.Implementation
             _mediator = mediator;
         }
 
+        public async Task Handle(Update update)
+        {
+            var (command, answer) = _messageParser.ParseMessage(update);
+
+            _logger.Information("Parse {message} to {command}", update, command.GetType());
+            var telegramResponses = (await _mediator.Send(command)).ToList();
+
+            if (answer.CallbackQueryId != null && telegramResponses.Count > 0)
+            {
+                telegramResponses.Add(new AnswerToCallback(answer.CallbackQueryId));
+            }
+
+            await SendMessages(telegramResponses, answer);
+        }
+
         private async Task SendMessages(IEnumerable<ITelegramResponse> telegramResponses, ResponseInfo responseInfo)
         {
+            var (userId, messageId) = responseInfo;
             foreach (var telegramResponse in telegramResponses)
             {
-                await SendMessage(telegramResponse, responseInfo);
+                _logger.Information("Send {message}", telegramResponse);
+                await SendMessage(telegramResponse, userId, messageId);
             }
         }
 
-        private Task SendMessage(ITelegramResponse telegramResponse, ResponseInfo responseInfo)
+        private Task SendMessage(ITelegramResponse telegramResponse, long chatId, int messageId)
         {
-            var (chatId, messageId, _) = responseInfo;
             return telegramResponse switch
             {
                 TextTelegramResponse text => _sender.SendText(text, chatId),
@@ -49,25 +65,10 @@ namespace CangguEvents.Asp.Services.Implementation
                 KeyboardTelegramResponse keyboard => _sender.SendKeyboard(keyboard, chatId),
                 EditKeyboardTelegramResponse response => _sender.EditMessageText(response, messageId, chatId),
                 AnswerToCallback callback => _sender.AnswerToCallback(callback.CallbackId),
-                _ => throw new ArgumentOutOfRangeException(telegramResponse.GetType().FullName)
+
+                _ => throw new ArgumentOutOfRangeException(nameof(telegramResponse),
+                    telegramResponse.GetType().FullName, "Unknown command")
             };
-        }
-
-        public async Task Handle(Update update)
-        {
-            var (command, answer) = _messageParser.ParseMessage(update);
-
-            _logger.Information("Parse {message} to {command}", update, command.GetType());
-            var telegramResponsesEnumerable = await _mediator.Send(command);
-            var telegramResponses = telegramResponsesEnumerable.ToList();
-
-            if (answer.CallbackQueryId != null && telegramResponses.Any())
-            {
-                telegramResponses.Add(new AnswerToCallback(answer.CallbackQueryId));
-            }
-
-            _logger.Information("Send {messages}", telegramResponses);
-            await SendMessages(telegramResponses, answer);
         }
     }
 }

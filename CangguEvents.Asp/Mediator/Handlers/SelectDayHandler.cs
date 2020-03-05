@@ -15,7 +15,7 @@ namespace CangguEvents.Asp.Mediator.Handlers
 {
     public class SelectDayHandler : IRequestHandlerDomain<SelectDayCommand>
     {
-        public async Task<IEnumerable<ITelegramResponse>> Handle(SelectDayCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(SelectDayCommand request,
             CancellationToken cancellationToken)
         {
             await Task.CompletedTask;

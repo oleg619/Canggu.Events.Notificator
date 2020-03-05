@@ -28,15 +28,15 @@ namespace CangguEvents.Asp.Mediator.Handlers
             _stateRepository = stateRepository;
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(EventsCommand command,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(EventsCommand command,
             CancellationToken cancellationToken)
         {
             var eventInfos = await GetEventInfos(command);
-            var userState = await _stateRepository.GetUserState(command.UserId);
-            return eventInfos.SelectMany(info => GetResponseForEvents(info, userState));
+            var userState = await _stateRepository.GetUserState(command.UserId, cancellationToken);
+            return eventInfos.SelectMany(info => GetResponseForEvents(info, userState)).ToList();
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(FullEventInfoCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(FullEventInfoCommand request,
             CancellationToken cancellationToken)
         {
             var eventInfo = await _repository.GetEvent(request.EventId, cancellationToken);
@@ -50,13 +50,13 @@ namespace CangguEvents.Asp.Mediator.Handlers
             };
         }
 
-        public async Task<IEnumerable<ITelegramResponse>> Handle(ShortEventInfoCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(ShortEventInfoCommand request,
             CancellationToken cancellationToken)
         {
             var eventInfo = await _repository.GetEvent(request.EventId, cancellationToken);
 
             var inlineKeyboardButton =
-                InlineKeyboardButton.WithCallbackData("Show more", $"full:{eventInfo.Id}");
+                InlineKeyboardButton.WithCallbackData("Show more", $"{CommandMessages.CallbackHide}:{eventInfo.Id}");
 
             return new List<ITelegramResponse>
             {

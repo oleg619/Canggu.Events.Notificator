@@ -23,7 +23,7 @@ namespace CangguEvents.Asp
 
                 await CreateHostBuilder(args)
                     .Build()
-                    // .InitDatabase()
+                    .InitDatabase()
                     .RunAsync();
             }
             catch (Exception ex)

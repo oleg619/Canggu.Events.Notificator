@@ -58,8 +58,6 @@ namespace CangguEvents.Asp
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 
@@ -71,12 +69,11 @@ namespace CangguEvents.Asp
 
             var config = GetBotConfiguration();
             ConfigureTelegram(builder, config);
-            builder.RegisterMaps();
+            builder.RegisterAutomapper();
 
             builder.RegisterType<TelegramMessengerSender>().AsSelf().AsImplementedInterfaces();
             builder.RegisterType<SqlLiteRepository>().AsImplementedInterfaces();
-            builder.RegisterType<InMemoryUserStateRepository>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<MessageHandler>().AsSelf().AsImplementedInterfaces();
+            builder.RegisterType<TelegramMessageHandler>().AsSelf().AsImplementedInterfaces();
             builder.RegisterType<MessageParser>().AsSelf();
 
             builder.RegisterInstance(config).SingleInstance();

@@ -8,31 +8,6 @@ namespace CangguEvents.SQLite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Instruments",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    FullName = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    BaseCurrency = table.Column<string>(nullable: true),
-                    QuoteCurrency = table.Column<string>(nullable: true),
-                    MaxQuantity = table.Column<decimal>(nullable: false),
-                    MinQuantity = table.Column<decimal>(nullable: false),
-                    MaxValue = table.Column<decimal>(nullable: false),
-                    MinValue = table.Column<decimal>(nullable: false),
-                    PricePrecision = table.Column<long>(nullable: false),
-                    QuantityPrecision = table.Column<long>(nullable: false),
-                    Active = table.Column<bool>(nullable: false),
-                    PriceTick = table.Column<decimal>(nullable: false),
-                    QuantityTick = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Instruments", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "LocationEntity",
                 columns: table => new
                 {
@@ -46,6 +21,20 @@ namespace CangguEvents.SQLite.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LocationEntity", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Subscribed = table.Column<bool>(nullable: false),
+                    ShortInfo = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,7 +98,7 @@ namespace CangguEvents.SQLite.Migrations
                 name: "DayOfWeekEntity");
 
             migrationBuilder.DropTable(
-                name: "Instruments");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Events");

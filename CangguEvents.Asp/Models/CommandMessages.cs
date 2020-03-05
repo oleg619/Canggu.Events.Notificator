@@ -16,5 +16,8 @@
         
         public const string CallbackDay = "day";
         public const string CallbackHide = "hide";
+        
+        public const string Full = "full";
+
     }
 }

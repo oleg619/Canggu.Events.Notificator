@@ -8,24 +8,26 @@ namespace CangguEvents.Asp.Controllers
     [Route("api/[controller]")]
     public class TelegramController : Controller
     {
-        private readonly MessageHandler _messageHandler;
+        private readonly TelegramMessageHandler _telegramMessageHandler;
 
-        public TelegramController(MessageHandler messageHandler)
+        public TelegramController(TelegramMessageHandler telegramMessageHandler)
         {
-            _messageHandler = messageHandler;
+            _telegramMessageHandler = telegramMessageHandler;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
             var cangguTimeNow = DateTimeService.CangguTimeNow;
-            return Ok($"Hello time in canggu {cangguTimeNow}");
+            return Ok($"Hello time in canggu {cangguTimeNow}" +
+                      "\nIs New VERSION, mimimi"
+            );
         }
 
         [HttpPost("update/{token}")]
         public async Task Update([FromRoute] string token, [FromBody] Update update)
         {
-            await _messageHandler.Handle(update);
+            await _telegramMessageHandler.Handle(update);
         }
     }
 }

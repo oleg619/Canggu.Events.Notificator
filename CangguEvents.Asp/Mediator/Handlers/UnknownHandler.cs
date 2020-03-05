@@ -10,7 +10,7 @@ namespace CangguEvents.Asp.Mediator.Handlers
 {
     public class UnknownHandler : IRequestHandlerDomain<UnknownCommand>
     {
-        public async Task<IEnumerable<ITelegramResponse>> Handle(UnknownCommand request,
+        public async Task<IReadOnlyCollection<ITelegramResponse>> Handle(UnknownCommand request,
             CancellationToken cancellationToken)
         {
             await Task.CompletedTask;

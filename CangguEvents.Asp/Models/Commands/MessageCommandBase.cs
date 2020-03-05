@@ -4,7 +4,7 @@ using MediatR;
 
 namespace CangguEvents.Asp.Models.Commands
 {
-    public abstract class MessageCommandBase : IRequest<IEnumerable<ITelegramResponse>>
+    public abstract class MessageCommandBase : IRequest<IReadOnlyCollection<ITelegramResponse>>
     {
         public readonly long UserId;
 

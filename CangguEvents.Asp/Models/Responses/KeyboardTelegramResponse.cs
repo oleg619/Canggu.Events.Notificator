@@ -15,16 +15,4 @@ namespace CangguEvents.Asp.Models.Responses
             Text = text;
         }
     }
-
-    public class EditKeyboardTelegramResponse : ITelegramResponse
-    {
-        public readonly InlineKeyboardMarkup Keyboard;
-        public readonly string Text;
-
-        public EditKeyboardTelegramResponse(InlineKeyboardMarkup keyboard, string text)
-        {
-            Keyboard = keyboard;
-            Text = text;
-        }
-    }
 }

@@ -41,11 +41,11 @@ namespace CangguEvents.Asp.Services.Implementation
 
                     var responseInfo = new ResponseInfo(chatId, update.CallbackQuery.Message.MessageId,
                         update.CallbackQuery.Id);
-                    
+
                     return (callbackCommand, responseInfo);
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(update.Type), update.Type, "Unknown type");
             }
         }
 
@@ -55,18 +55,21 @@ namespace CangguEvents.Asp.Services.Implementation
             var command = strings[0];
             var commandId = strings[1];
 
+            var eventId = int.Parse(commandId);
+
             return command switch
             {
-                "full" => new FullEventInfoCommand(int.Parse(commandId), chatId),
-                CommandMessages.CallbackHide => new ShortEventInfoCommand(int.Parse(commandId), chatId),
-                CommandMessages.CallbackDay => EventsCommand.Day((DayOfWeek) int.Parse(commandId), chatId),
-                _ => throw new NotImplementedException()
+                CommandMessages.Full => new FullEventInfoCommand(eventId, chatId),
+                CommandMessages.CallbackHide => new ShortEventInfoCommand(eventId, chatId),
+                CommandMessages.CallbackDay => EventsCommand.Day((DayOfWeek) eventId, chatId),
+
+                _ => throw new ArgumentOutOfRangeException(nameof(command), command, "Unknown command")
             };
         }
 
         private MessageCommandBase TextTypeToCommandBase(string message, long chatId)
         {
-            message = Regex.Replace(message, @"[^\u0000-\u007F]+", string.Empty);
+            message = message.RemoveEmoji();
 
             var func = CommandsToMessage
                 .Where(pair => pair.Key.Contains(message, StringComparison.OrdinalIgnoreCase))
@@ -96,5 +99,13 @@ namespace CangguEvents.Asp.Services.Implementation
                 {CommandMessages.ShortInfo, id => new LengthInfoCommand(true, id)},
                 {CommandMessages.FullInfo, id => new LengthInfoCommand(false, id)}
             };
+    }
+
+    public static class StringExtensions
+    {
+        public static string RemoveEmoji(this string message)
+        {
+            return Regex.Replace(message, @"[^\u0000-\u007F]+", string.Empty);
+        }
     }
 }

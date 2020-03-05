@@ -11,10 +11,6 @@ namespace CangguEvents.SQLite
         }
 
         public DbSet<EventEntity> Events { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.EnableSensitiveDataLogging();
-        }
+        public DbSet<UserStateEntity> Users { get; set; }
     }
 }

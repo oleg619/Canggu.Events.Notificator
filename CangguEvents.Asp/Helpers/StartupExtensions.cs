@@ -25,7 +25,7 @@ namespace CangguEvents.Asp.Helpers
             builder.RegisterInstance(client).AsImplementedInterfaces().SingleInstance();
         }
 
-        public static void RegisterMaps(this ContainerBuilder builder)
+        public static void RegisterAutomapper(this ContainerBuilder builder)
         {
             var assemblyNames = Assembly.GetExecutingAssembly().GetReferencedAssemblies();
             var autoMapperProfiles = assemblyNames

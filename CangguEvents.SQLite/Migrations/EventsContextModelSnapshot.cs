@@ -92,6 +92,23 @@ namespace CangguEvents.SQLite.Migrations
                     b.ToTable("LocationEntity");
                 });
 
+            modelBuilder.Entity("CangguEvents.SQLite.Entities.UserStateEntity", b =>
+                {
+                    b.Property<long>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ShortInfo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Subscribed")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("CangguEvents.SQLite.Entities.DayOfWeekEntity", b =>
                 {
                     b.HasOne("CangguEvents.SQLite.Entities.EventEntity", "EventEntity")

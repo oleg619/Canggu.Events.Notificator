@@ -3,7 +3,9 @@
   &lt;Assembly Path="C:\Users\Olehrechukh\.nuget\packages\mediatr\7.0.0\lib\netstandard2.0\MediatR.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=b8305851_002Df85c_002D41bd_002D95a0_002De7d6873ced97_0023CanguuEvents_002EWpf/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Automapper/@EntryIndexedValue">True</s:Boolean>
 	
 	
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Canggu/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/UserDictionary/Words/=Serilog/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Serilog/@EntryIndexedValue">True</s:Boolean>
+	</wpf:ResourceDictionary>

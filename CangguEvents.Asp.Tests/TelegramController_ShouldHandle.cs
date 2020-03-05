@@ -46,7 +46,7 @@ namespace CangguEvents.Asp.Tests
 
             await telegramBotClient.Received()
                 .SendTextMessageAsync(Arg.Is<ChatId>(x => x.Identifier == chatId), "Choose", ParseMode.Markdown, false,
-                    false, 0, Arg.Any<IReplyMarkup>(), default);
+                    false, 0, Arg.Any<IReplyMarkup>());
         }
     }
 }

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace CangguEvents.Asp.Mediator.Base
 {
-    public interface IRequestHandlerDomain<in TRequest> : IRequestHandler<TRequest, IEnumerable<ITelegramResponse>>
+    public interface IRequestHandlerDomain<in TRequest> : IRequestHandler<TRequest, IReadOnlyCollection<ITelegramResponse>>
         where TRequest : MessageCommandBase
     {
     }

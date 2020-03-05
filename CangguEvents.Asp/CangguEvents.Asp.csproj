@@ -31,6 +31,12 @@
         <ProjectReference Include="..\CangguEvents.SQLite\CangguEvents.SQLite.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="app.db">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <CodeAnalysisRuleSet>null.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>

@@ -19,5 +19,11 @@
             messageId = MessageId;
             callbackQueryId = CallbackQueryId;
         }
+        
+        public void Deconstruct(out long userId, out int messageId)
+        {
+            userId = UserId;
+            messageId = MessageId;
+        }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CangguEvents.SQLite.Migrations
 {
     [DbContext(typeof(EventsContext))]
-    [Migration("20191222044606_Initial")]
+    [Migration("20200305141319_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,59 +71,6 @@ namespace CangguEvents.SQLite.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("CangguEvents.SQLite.Entities.Instrument", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("BaseCurrency")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("MaxQuantity")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("MaxValue")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("MinQuantity")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("MinValue")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("PricePrecision")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("PriceTick")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("QuantityPrecision")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("QuantityTick")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("QuoteCurrency")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Instruments");
-                });
-
             modelBuilder.Entity("CangguEvents.SQLite.Entities.LocationEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -145,6 +92,23 @@ namespace CangguEvents.SQLite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LocationEntity");
+                });
+
+            modelBuilder.Entity("CangguEvents.SQLite.Entities.UserStateEntity", b =>
+                {
+                    b.Property<long>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ShortInfo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Subscribed")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CangguEvents.SQLite.Entities.DayOfWeekEntity", b =>
