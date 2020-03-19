@@ -1,10 +1,11 @@
 ﻿using Autofac;
+using CangguEvents.Asp;
 using CangguEvents.Asp.Configurations;
 using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using Telegram.Bot;
 
-namespace CangguEvents.Asp.Tests.Utils
+namespace CangguEvents.IntergationTests.Utils
 {
     public class CustomStartup : Startup
     {

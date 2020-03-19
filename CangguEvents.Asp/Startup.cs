@@ -1,10 +1,10 @@
-﻿using System.IO;
-using System.Net.NetworkInformation;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Autofac;
 using CangguEvents.Asp.Configurations;
 using CangguEvents.Asp.Helpers;
-using CangguEvents.Asp.Mediator.Handlers;
 using CangguEvents.Asp.Middleware;
 using CangguEvents.Asp.Models.Commands;
 using CangguEvents.Asp.Services;
@@ -13,14 +13,13 @@ using CangguEvents.SQLite;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using Shared;
+using CorsMiddleware = CangguEvents.Asp.Middleware.CorsMiddleware;
 
 namespace CangguEvents.Asp
 {
@@ -52,6 +51,7 @@ namespace CangguEvents.Asp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<CorsMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
             app.UseMiddleware<SerilogMiddleware>();

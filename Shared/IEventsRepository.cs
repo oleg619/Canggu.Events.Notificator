@@ -7,7 +7,7 @@ namespace Shared
 {
     public interface IEventsRepository
     {
-        Task AddEvent(EventInfo eventInfos, CancellationToken cancellationToken = default);
+        Task<EventInfo> AddEvent(EventInfo eventInfos, CancellationToken cancellationToken = default);
         Task AddEvents(IEnumerable<EventInfo> eventInfos, CancellationToken cancellationToken = default);
         Task<List<EventInfo>> GetAllEvents(CancellationToken cancellationToken = default);
         Task<List<EventInfo>> GetEvents(DayOfWeek dayOfWeek, CancellationToken cancellationToken = default);

@@ -5,9 +5,9 @@ using Shared;
 
 namespace CangguEvents.SQLite
 {
-    public class ContactFormMappingProfile : Profile
+    public class SqlProfile : Profile
     {
-        public ContactFormMappingProfile()
+        public SqlProfile()
         {
             CreateMap<EventInfo, EventEntity>().ReverseMap();
             CreateMap<Location, LocationEntity>().ReverseMap();

@@ -60,7 +60,7 @@ namespace CangguEvents.Asp.Mediator.Handlers
             }
 
             var replyKeyboard = GetSettingReplyKeyboardMarkupFor(userState);
-            var text = $"You successfully changed info to {(userState.ShortInfo ? "short" : "long")}";
+            var text = $"You successfully changed info to {(userState.ShortInfo ? "short" : "full")}";
             return new[] {new KeyboardTelegramResponse(replyKeyboard, text)};
         }
 

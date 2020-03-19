@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace CangguEvents.Asp.Tests.Utils
+namespace CangguEvents.IntergationTests.Utils
 {
     public static class HttpClientExtensions
     {

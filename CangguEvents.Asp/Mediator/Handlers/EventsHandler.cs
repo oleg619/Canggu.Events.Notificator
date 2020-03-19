@@ -64,6 +64,13 @@ namespace CangguEvents.Asp.Mediator.Handlers
             };
         }
 
+        public static string FormatCaption(EventInfo eventInfo)
+        {
+            var workDays = eventInfo.DayOfWeeks.GetWorkDaysAsString();
+
+            return $"[{eventInfo.Name}]({eventInfo.Location.GoogleUrl})\n{eventInfo.Description}\n*{workDays}*";
+        }
+        
         private static IEnumerable<ITelegramResponse> GetResponseForEvents(EventInfo eventInfo, UserState userState)
         {
             if (userState.ShortInfo)
@@ -85,20 +92,7 @@ namespace CangguEvents.Asp.Mediator.Handlers
                 new InlineKeyboardMarkup(InlineKeyboardButton.WithCallbackData("Show more", $"full:{eventInfo.Id}"));
             return new[] {new KeyboardTelegramResponse(inlineKeyboardMarkup, eventInfo.Name)};
         }
-
-        private static string FormatCaption(EventInfo eventInfo)
-        {
-            var works = eventInfo.DayOfWeeks.Count switch
-            {
-                7 => "Works whole week",
-                2 when eventInfo.DayOfWeeks.Contains(DayOfWeek.Sunday) &&
-                       eventInfo.DayOfWeeks.Contains(DayOfWeek.Saturday) => "Works at weekend",
-                _ => $"Works on : {string.Join(" | ", eventInfo.DayOfWeeks.Select(ShortDayNames.Get))}"
-            };
-
-            return $"[{eventInfo.Name}]({eventInfo.Location.GoogleUrl})\n{eventInfo.Description}\n*{works}*";
-        }
-
+        
         private Task<List<EventInfo>> GetEventInfos(EventsCommand command)
         {
             return command.OneDay ? _repository.GetEvents(command.DayOfWeek) : _repository.GetAllEvents();

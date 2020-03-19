@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CangguEvents.Asp.Tests.Utils;
+using CangguEvents.IntergationTests.Utils;
 using NSubstitute;
 using Serilog;
 using Telegram.Bot;
@@ -11,7 +11,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CangguEvents.Asp.Tests
+namespace CangguEvents.IntegrationTests
 {
     // ReSharper disable once InconsistentNaming
     public class TelegramController_ShouldHandle

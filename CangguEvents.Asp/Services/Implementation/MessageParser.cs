@@ -31,7 +31,7 @@ namespace CangguEvents.Asp.Services.Implementation
                     chatId = update.Message.Chat.Id;
                     message = update.Message.Text;
 
-                    var textTypeToCommandBase = TextTypeToCommandBase(message, chatId);
+                    var textTypeToCommandBase = GetMessageCommand(message, chatId);
                     return (textTypeToCommandBase, new ResponseInfo(chatId, update.Message.MessageId));
                 }
                 case UpdateType.CallbackQuery:
@@ -67,8 +67,13 @@ namespace CangguEvents.Asp.Services.Implementation
             };
         }
 
-        private MessageCommandBase TextTypeToCommandBase(string message, long chatId)
+        private MessageCommandBase GetMessageCommand(string message, long chatId)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return new UnknownCommand(chatId);
+            }
+
             message = message.RemoveEmoji();
 
             var func = CommandsToMessage

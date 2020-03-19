@@ -53,11 +53,13 @@ namespace CangguEvents.SQLite
             return _mapper.Map<EventInfo>(events);
         }
 
-        public async Task AddEvent(EventInfo eventInfos, CancellationToken cancellationToken)
+        public async Task<EventInfo> AddEvent(EventInfo eventInfos, CancellationToken cancellationToken)
         {
             var eventEntity = _mapper.Map<EventEntity>(eventInfos);
             await _context.Events.AddAsync(eventEntity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
+
+            return _mapper.Map<EventInfo>(eventEntity);
         }
 
         public async Task AddEvents(IEnumerable<EventInfo> eventInfos, CancellationToken cancellationToken)

@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.SQLite", "Cang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanguuEvents.Wpf", "CanguuEvents.Wpf\CanguuEvents.Wpf.csproj", "{B8305851-F85C-41BD-95A0-E7D6873CED97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.Asp.Tests", "CangguEvents.Asp.Tests\CangguEvents.Asp.Tests.csproj", "{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CangguEvents.IntegrationTests", "CangguEvents.IntegrationTests\CangguEvents.IntegrationTests.csproj", "{423DEE6F-2093-4732-B0D5-CCD23DDBA46D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

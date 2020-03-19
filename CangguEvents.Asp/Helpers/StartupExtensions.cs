@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Autofac;
@@ -25,10 +26,21 @@ namespace CangguEvents.Asp.Helpers
             builder.RegisterInstance(client).AsImplementedInterfaces().SingleInstance();
         }
 
+        static IEnumerable<AssemblyName> EnumerateAllAssemblies()
+        {
+            var executingAssembly = Assembly.GetExecutingAssembly();
+
+            yield return executingAssembly.GetName();
+
+            foreach (var assembly in executingAssembly.GetReferencedAssemblies())
+            {
+                yield return assembly;
+            }
+        }
+
         public static void RegisterAutomapper(this ContainerBuilder builder)
         {
-            var assemblyNames = Assembly.GetExecutingAssembly().GetReferencedAssemblies();
-            var autoMapperProfiles = assemblyNames
+            var autoMapperProfiles = EnumerateAllAssemblies()
                 .SelectMany(an => Assembly.Load(an).GetTypes())
                 .Where(p => typeof(Profile).IsAssignableFrom(p) && p.IsPublic && !p.IsAbstract)
                 .Distinct()

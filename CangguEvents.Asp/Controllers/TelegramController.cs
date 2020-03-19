@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CangguEvents.Asp.Services.Implementation;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using Telegram.Bot.Types;
 
 namespace CangguEvents.Asp.Controllers
@@ -9,24 +11,28 @@ namespace CangguEvents.Asp.Controllers
     public class TelegramController : Controller
     {
         private readonly TelegramMessageHandler _telegramMessageHandler;
+        private readonly ILogger _logger;
 
-        public TelegramController(TelegramMessageHandler telegramMessageHandler)
+        public TelegramController(
+            TelegramMessageHandler telegramMessageHandler,
+            ILogger logger)
         {
             _telegramMessageHandler = telegramMessageHandler;
+            _logger = logger;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
             var cangguTimeNow = DateTimeService.CangguTimeNow;
-            return Ok($"Hello time in canggu {cangguTimeNow}" +
-                      "\nIs New VERSION, mimimi"
-            );
+            return Ok($"Hello time in canggu {cangguTimeNow}{Environment.NewLine}" +
+                      "Mimi1");
         }
 
         [HttpPost("update/{token}")]
         public async Task Update([FromRoute] string token, [FromBody] Update update)
         {
+            _logger.Information("We received new {@message}", update);
             await _telegramMessageHandler.Handle(update);
         }
     }
