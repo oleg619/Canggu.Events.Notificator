@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -8,25 +9,13 @@ namespace CangguEvents.Asp.Swagger
     {
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
-            var newPaths = new Dictionary<string, OpenApiPathItem>();
-            var removeKeys = new List<string>();
-            foreach (var (key, pathItem) in swaggerDoc.Paths)
-            {
-                var newKey = key.ToLower();
-                if (newKey != key)
-                {
-                    removeKeys.Add(key);
-                    newPaths.Add(newKey, pathItem);
-                }
-            }
+            var newPaths = swaggerDoc.Paths
+                .Where(pair => pair.Key.ToLower() != pair.Key)
+                .ToDictionary(pair => pair.Key, pair => pair.Value);
 
             foreach (var (key, pathItem) in newPaths)
             {
-                swaggerDoc.Paths.Add(key, pathItem);
-            }
-
-            foreach (var key in removeKeys)
-            {
+                swaggerDoc.Paths.Add(key.ToLower(), pathItem);
                 swaggerDoc.Paths.Remove(key);
             }
         }

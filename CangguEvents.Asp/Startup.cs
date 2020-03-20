@@ -9,6 +9,7 @@ using CangguEvents.Asp.Middleware;
 using CangguEvents.Asp.Models.Commands;
 using CangguEvents.Asp.Services;
 using CangguEvents.Asp.Services.Implementation;
+using CangguEvents.Asp.Swagger;
 using CangguEvents.SQLite;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Serilog;
 using CorsMiddleware = CangguEvents.Asp.Middleware.CorsMiddleware;
 
@@ -35,9 +37,12 @@ namespace CangguEvents.Asp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore(options => { options.Filters.Add(typeof(ValidateModelFilter)); });
+            
             services.AddControllers()
                 .AddApplicationPart(typeof(Startup).Assembly)
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson(options => options.SerializerSettings.Formatting = Formatting.Indented);
+            
             services.AddOptions();
 
             services.AddDbContext<EventsContext>(options => options.UseSqlite(
@@ -45,7 +50,12 @@ namespace CangguEvents.Asp
 
             services.AddControllers();
 
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); 
+                // c.DocumentFilter<LowercaseDocumentFilter>();
+            });
+            services.AddRouting(options => options.LowercaseUrls = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +65,7 @@ namespace CangguEvents.Asp
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
             app.UseMiddleware<SerilogMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
 
