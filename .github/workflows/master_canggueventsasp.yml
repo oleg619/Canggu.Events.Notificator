@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'canggueventsasp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_263edbc317d9426fb39f91d095bef688 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fee7966b8c32423583306958a267869f }}
         package: ${{env.DOTNET_ROOT}}/myapp 
