@@ -26,13 +26,13 @@ jobs:
     - name: Test with dotnet
       run: dotnet test --configuration Release
 
-#    - name: dotnet publish
-#      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-#
-#    - name: Deploy to Azure Web App
-#      uses: azure/webapps-deploy@v1
-#      with:
-#        app-name: 'canggueventsasp'
-#        slot-name: 'production'
-#        publish-profile: ${{ secrets.AzureAppService_PublishProfile_947c5bf8635e477eb784e627d0f0e433 }}
-#        package: ${{env.DOTNET_ROOT}}/myapp 
+    - name: dotnet publish
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v1
+      with:
+        app-name: 'canggueventsasp'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_947c5bf8635e477eb784e627d0f0e433 }}
+        package: ${{env.DOTNET_ROOT}}/myapp 
