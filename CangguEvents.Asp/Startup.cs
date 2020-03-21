@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
 using CangguEvents.Asp.Configurations;
 using CangguEvents.Asp.Helpers;
@@ -9,7 +6,6 @@ using CangguEvents.Asp.Middleware;
 using CangguEvents.Asp.Models.Commands;
 using CangguEvents.Asp.Services;
 using CangguEvents.Asp.Services.Implementation;
-using CangguEvents.Asp.Swagger;
 using CangguEvents.SQLite;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -53,7 +49,6 @@ namespace CangguEvents.Asp
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); 
-                // c.DocumentFilter<LowercaseDocumentFilter>();
             });
             services.AddRouting(options => options.LowercaseUrls = true);
         }

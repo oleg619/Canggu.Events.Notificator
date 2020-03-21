@@ -37,6 +37,10 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Swagger" />
+    </ItemGroup>
+
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <CodeAnalysisRuleSet>null.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
