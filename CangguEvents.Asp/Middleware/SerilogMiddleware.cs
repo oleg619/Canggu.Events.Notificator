@@ -90,8 +90,7 @@ namespace CangguEvents.Asp.Middleware
             var request = httpContext.Request;
 
             var result = Log
-                .ForContext("RequestHeaders", request.Headers.ToDictionary(h => h.Key, h => h.Value.ToString()),
-                    destructureObjects: true)
+                .ForContext("RequestHeaders", request.Headers.ToDictionary(h => h.Key, h => h.Value.ToString()), true)
                 .ForContext("RequestHost", request.Host)
                 .ForContext("RequestProtocol", request.Protocol);
 

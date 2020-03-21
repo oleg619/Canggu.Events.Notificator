@@ -59,8 +59,8 @@ namespace CangguEvents.Asp
             app.UseMiddleware<CorsMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
-            app.UseMiddleware<SerilogMiddleware>();
             app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<SerilogMiddleware>();
 
             app.UseRouting();
 
