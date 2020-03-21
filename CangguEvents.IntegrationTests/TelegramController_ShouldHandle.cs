@@ -24,12 +24,6 @@ namespace CangguEvents.IntegrationTests
                 .CreateLogger();
         }
 
-        [Fact]
-        public void FailedTest()
-        {
-            throw new Exception("Testing CI");
-        }
-
         [Theory]
         [Conventions]
         public async Task StartCommand(HttpClient client, ITelegramBotClient telegramBotClient)
