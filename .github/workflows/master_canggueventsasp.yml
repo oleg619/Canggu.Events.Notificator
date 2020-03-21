@@ -27,7 +27,7 @@ jobs:
       run: dotnet test --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp -r <RID> --self-contained false
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp --self-contained false
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
