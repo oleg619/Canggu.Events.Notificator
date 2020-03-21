@@ -44,7 +44,7 @@ namespace CangguEvents.Asp.Helpers
                 .SelectMany(an => Assembly.Load(an).GetTypes())
                 .Where(p => typeof(Profile).IsAssignableFrom(p) && p.IsPublic && !p.IsAbstract)
                 .Distinct()
-                .Select(p => (Profile) Activator.CreateInstance(p));
+                .Select(p => Activator.CreateInstance(p) as Profile);
 
             builder.Register(ctx => new MapperConfiguration(cfg =>
             {
