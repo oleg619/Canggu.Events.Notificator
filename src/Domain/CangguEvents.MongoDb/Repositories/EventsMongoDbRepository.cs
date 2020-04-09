@@ -29,7 +29,6 @@ namespace CangguEvents.MongoDb.Repositories
                 .Project(info => _mapper.Map<EventInfo>(info))
                 .ToListAsync(cancellationToken);
 
-
         public Task<EventInfo> GetEvent(int id, CancellationToken cancellationToken = default)
             => Events.Find(info => info.Id == id)
                 .Project(info => _mapper.Map<EventInfo>(info))

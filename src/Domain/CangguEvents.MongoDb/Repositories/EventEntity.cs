@@ -5,7 +5,7 @@ using CangguEvents.Domain;
 
 namespace CangguEvents.MongoDb.Repositories
 {
-    class MongoProfile : Profile
+    public class MongoProfile : Profile
     {
         public MongoProfile()
         {
