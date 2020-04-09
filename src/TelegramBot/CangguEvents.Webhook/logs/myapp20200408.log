@@ -1,0 +1,108 @@
+2020-04-08 22:15:59.432 +03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2020-04-08 22:15:59.803 +03:00 [INF] Entity Framework Core 3.1.0 initialized 'EventsContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2020-04-08 22:15:59.855 +03:00 [DBG] Migrating using database 'main' on server 'app.db'.
+2020-04-08 22:15:59.860 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.868 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.878 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2020-04-08 22:15:59.883 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (5ms).
+2020-04-08 22:15:59.883 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.884 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.889 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:15:59.903 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:15:59.905 +03:00 [DBG] Closing connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.906 +03:00 [DBG] Closed connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.908 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.909 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.909 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2020-04-08 22:15:59.909 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2020-04-08 22:15:59.909 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.910 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.910 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:15:59.911 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:15:59.911 +03:00 [DBG] Closing connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.911 +03:00 [DBG] Closed connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.923 +03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2020-04-08 22:15:59.923 +03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2020-04-08 22:15:59.923 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.925 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.925 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2020-04-08 22:15:59.927 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2020-04-08 22:15:59.929 +03:00 [DBG] A data reader was disposed.
+2020-04-08 22:15:59.929 +03:00 [DBG] Closing connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:15:59.929 +03:00 [DBG] Closed connection to database 'main' on server 'app.db'.
+2020-04-08 22:15:59.939 +03:00 [INF] No migrations were applied. The database is already up to date.
+2020-04-08 22:15:59.940 +03:00 [DBG] 'EventsContext' disposed.
+2020-04-08 22:15:59.944 +03:00 [DBG] Hosting starting
+2020-04-08 22:16:00.045 +03:00 [DBG] Failed to locate the development https certificate at 'null'.
+2020-04-08 22:16:00.060 +03:00 [INF] Now listening on: http://localhost:8443
+2020-04-08 22:16:00.060 +03:00 [DBG] Loaded hosting startup assembly CangguEvents.Asp
+2020-04-08 22:16:00.408 +03:00 [INF] Start webhook with https://canggueventsasp1.azurewebsites.net/api/telegram/update 1093369186:AAFMPKqDmS2uH2OGpFgCZFmsCqpaPclIKIw
+2020-04-08 22:16:00.484 +03:00 [INF] End set webhook
+2020-04-08 22:16:00.485 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-04-08 22:16:00.485 +03:00 [INF] Hosting environment: Production
+2020-04-08 22:16:00.485 +03:00 [INF] Content root path: C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp
+2020-04-08 22:16:00.485 +03:00 [DBG] Hosting started
+2020-04-08 22:16:36.117 +03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2020-04-08 22:16:36.502 +03:00 [INF] Entity Framework Core 3.1.0 initialized 'EventsContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2020-04-08 22:16:36.574 +03:00 [DBG] Migrating using database 'main' on server 'app.db'.
+2020-04-08 22:16:36.579 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.588 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.597 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2020-04-08 22:16:36.602 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (5ms).
+2020-04-08 22:16:36.602 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.603 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.609 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:16:36.629 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:16:36.631 +03:00 [DBG] Closing connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.633 +03:00 [DBG] Closed connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.633 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.634 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.634 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2020-04-08 22:16:36.634 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2020-04-08 22:16:36.634 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.635 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.635 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:16:36.636 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2020-04-08 22:16:36.636 +03:00 [DBG] Closing connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.637 +03:00 [DBG] Closed connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.651 +03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2020-04-08 22:16:36.651 +03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2020-04-08 22:16:36.651 +03:00 [DBG] Opening connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.651 +03:00 [DBG] Opened connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.652 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2020-04-08 22:16:36.654 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2020-04-08 22:16:36.658 +03:00 [DBG] A data reader was disposed.
+2020-04-08 22:16:36.658 +03:00 [DBG] Closing connection to database 'main' on server 'C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp\app.db'.
+2020-04-08 22:16:36.658 +03:00 [DBG] Closed connection to database 'main' on server 'app.db'.
+2020-04-08 22:16:36.669 +03:00 [INF] No migrations were applied. The database is already up to date.
+2020-04-08 22:16:36.671 +03:00 [DBG] 'EventsContext' disposed.
+2020-04-08 22:16:36.677 +03:00 [DBG] Hosting starting
+2020-04-08 22:16:37.912 +03:00 [DBG] Failed to locate the development https certificate at 'null'.
+2020-04-08 22:16:37.945 +03:00 [INF] Now listening on: http://localhost:8443
+2020-04-08 22:16:37.945 +03:00 [DBG] Loaded hosting startup assembly CangguEvents.Asp
+2020-04-08 22:16:38.332 +03:00 [INF] Start webhook with https://canggueventsasp1.azurewebsites.net/api/telegram/update 1093369186:AAFMPKqDmS2uH2OGpFgCZFmsCqpaPclIKIw
+2020-04-08 22:16:38.401 +03:00 [INF] End set webhook
+2020-04-08 22:16:38.401 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-04-08 22:16:38.402 +03:00 [INF] Hosting environment: Production
+2020-04-08 22:16:38.402 +03:00 [INF] Content root path: C:\Projects\Pet\CangguEvents\src\CangguEvents.Asp
+2020-04-08 22:16:38.402 +03:00 [DBG] Hosting started

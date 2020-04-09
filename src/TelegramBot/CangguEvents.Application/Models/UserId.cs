@@ -1,0 +1,3 @@
+﻿namespace CangguEvents.Application.Models
+{
+}
