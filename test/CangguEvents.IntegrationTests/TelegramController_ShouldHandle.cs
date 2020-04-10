@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CangguEvents.IntergationTests.Utils;
+using CangguEvents.IntegrationTests.Utils;
 using NSubstitute;
 using Serilog;
 using Telegram.Bot;

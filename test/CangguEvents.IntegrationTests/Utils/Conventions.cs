@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
 
-namespace CangguEvents.IntergationTests.Utils
+namespace CangguEvents.IntegrationTests.Utils
 {
     public class Conventions : AutoDataAttribute
     {

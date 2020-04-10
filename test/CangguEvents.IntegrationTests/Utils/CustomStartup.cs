@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using Telegram.Bot;
 
-namespace CangguEvents.IntergationTests.Utils
+namespace CangguEvents.IntegrationTests.Utils
 {
     public class CustomStartup : Startup
     {
