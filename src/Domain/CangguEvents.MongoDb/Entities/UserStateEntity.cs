@@ -1,7 +1,7 @@
 ﻿using CangguEvents.Domain;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace CangguEvents.MongoDb.Repositories
+namespace CangguEvents.MongoDb.Entities
 {
     public class UserStateEntity
     {

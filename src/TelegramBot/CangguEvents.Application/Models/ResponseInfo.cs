@@ -1,6 +1,8 @@
-﻿namespace CangguEvents.Application.Models
+﻿using System;
+
+namespace CangguEvents.Application.Models
 {
-    public readonly struct ResponseInfo
+    public readonly struct ResponseInfo : IEquatable<ResponseInfo>
     {
         public readonly long UserId;
         public readonly int MessageId;
@@ -19,11 +21,18 @@
             messageId = MessageId;
             callbackQueryId = CallbackQueryId;
         }
-        
+
         public void Deconstruct(out long userId, out int messageId)
         {
             userId = UserId;
             messageId = MessageId;
         }
+
+        public bool Equals(ResponseInfo other) =>
+            UserId == other.UserId && MessageId == other.MessageId && CallbackQueryId == other.CallbackQueryId;
+
+        public override bool Equals(object? obj) => obj is ResponseInfo other && Equals(other);
+
+        public override int GetHashCode() => HashCode.Combine(UserId, MessageId, CallbackQueryId);
     }
 }

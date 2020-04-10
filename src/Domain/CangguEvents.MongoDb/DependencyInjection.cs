@@ -32,7 +32,7 @@ namespace CangguEvents.MongoDb
             services.AddSingleton(context =>
             {
                 var configuration = context.GetService<IConfiguration>();
-                var options = configuration.GetOptions<MongoDbOptions>("mongo");
+                var options = configuration.GetOptions<MongoDbOptions>("Mongo");
 
                 return options;
             });

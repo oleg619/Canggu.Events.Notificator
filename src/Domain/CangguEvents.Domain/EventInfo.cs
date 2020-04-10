@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CangguEvents.Domain
 {
-    public readonly struct EventInfo : IIdentifiable
+    public readonly struct EventInfo : IEquatable<EventInfo>
     {
         public long Id { get; }
         public byte[] Image { get; }
@@ -22,5 +22,13 @@ namespace CangguEvents.Domain
             DayOfWeeks = dayOfWeeks;
             Id = id;
         }
+
+        public bool Equals(EventInfo other) =>
+            Id == other.Id && Equals(Image, other.Image) && Description == other.Description &&
+            Name == other.Name && Equals(Location, other.Location) && Equals(DayOfWeeks, other.DayOfWeeks);
+
+        public override bool Equals(object obj) => obj is EventInfo other && Equals(other);
+
+        public override int GetHashCode() => HashCode.Combine(Id, Image, Description, Name, Location, DayOfWeeks);
     }
 }

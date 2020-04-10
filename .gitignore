@@ -43,3 +43,4 @@ obj/
 /.vs
 /.idea
 /*.user
+/src/TelegramBot/CangguEvents.Webhook/logs

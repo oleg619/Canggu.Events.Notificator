@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using CangguEvents.Domain;
+using CangguEvents.MongoDb.Entities;
 using MongoDB.Driver;
 
 namespace CangguEvents.MongoDb.Repositories

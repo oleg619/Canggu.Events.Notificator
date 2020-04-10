@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CangguEvents.Domain;
+using CangguEvents.MongoDb.Entities;
 using MongoDB.Driver;
 
 namespace CangguEvents.MongoDb.Repositories

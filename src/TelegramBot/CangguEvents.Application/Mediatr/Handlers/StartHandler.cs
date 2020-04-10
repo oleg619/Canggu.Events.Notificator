@@ -25,10 +25,7 @@ namespace CangguEvents.Application.Mediatr.Handlers
         {
             var userState = new UserState(true, true);
 
-            // if (await _stateRepository.GetUserState(request.UserId, cancellationToken) == default)
-            {
-                await _stateRepository.CreateUser(request.UserId, userState, cancellationToken);
-            }
+            await _stateRepository.CreateUser(request.UserId, userState, cancellationToken);
 
             return StartKeyboard();
         }

@@ -18,4 +18,10 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-preview.2.20120.8" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\CangguEvents.Domain\CangguEvents.Domain.csproj" />
+      <ProjectReference Include="..\..\Domain\CangguEvents.MongoDb\CangguEvents.MongoDb.csproj" />
+      <ProjectReference Include="..\CangguEvents.Admin.Application\CangguEvents.Admin.Application.csproj" />
+    </ItemGroup>
+
 </Project>

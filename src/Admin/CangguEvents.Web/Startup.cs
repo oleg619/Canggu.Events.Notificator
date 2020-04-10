@@ -1,3 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using AutoMapper;
+using CangguEvents.Api;
+using CangguEvents.MongoDb;
 using CangguEvents.Web.Areas.Identity;
 using CangguEvents.Web.Data;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +31,8 @@ namespace CangguEvents.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplication();
+            services.AddMongo();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -34,7 +43,7 @@ namespace CangguEvents.Web
             services
                 .AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>
                 >();
-            services.AddSingleton<WeatherForecastService>();
+            services.RegisterAutomapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +75,40 @@ namespace CangguEvents.Web
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+        }
+    }
+
+    static class Extension
+    {
+        public static void RegisterAutomapper(this IServiceCollection service)
+        {
+            var autoMapperProfiles = EnumerateAllAssemblies()
+                .SelectMany(an => Assembly.Load(an).GetTypes())
+                .Where(p => typeof(Profile).IsAssignableFrom(p) && p.IsPublic && !p.IsAbstract)
+                .Distinct()
+                .Select(p => Activator.CreateInstance(p) as Profile);
+
+            service.AddScoped(ctx => new MapperConfiguration(cfg =>
+            {
+                foreach (var profile in autoMapperProfiles)
+                {
+                    cfg.AddProfile(profile);
+                }
+            }));
+
+            service.AddScoped(ctx => ctx.GetService<MapperConfiguration>().CreateMapper());
+        }
+
+        static IEnumerable<AssemblyName> EnumerateAllAssemblies()
+        {
+            var executingAssembly = Assembly.GetExecutingAssembly();
+
+            yield return executingAssembly.GetName();
+
+            foreach (var assembly in executingAssembly.GetReferencedAssemblies())
+            {
+                yield return assembly;
+            }
         }
     }
 }
